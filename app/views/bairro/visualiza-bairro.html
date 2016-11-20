@@ -1,0 +1,35 @@
+<div ng-controller="VisualizaBairroController">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <i class="fa fa-edit"></i>
+            Visualizar de Bairro
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Nome do Bairro</label>
+                        <input type="text" class="form-control" name="bairro" id="bairro" ng-model="bairro"
+                               disabled>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Nome da Cidade</label>
+                        <input type="text" class="form-control" name="cidade" ng-model="cidade"
+                               disabled>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Estado</label>
+                        <input type="text" class="form-control" name="estado" ng-model="estado"
+                               disabled>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <button class="btn btn-primary" ng-click="abrirPagina('cadastroBairro')">Voltar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div ng-controller="ManterBairroController">
+    <form name="bairroForm" novalidate>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="fa fa-edit"></i>
+                Cadastro de Bairro
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error':bairroForm.bairro.$touched && bairroForm.bairro.$invalid}">
+                            <label class="control-label">Nome do Bairro</label>
+                            <input type="text" class="form-control" name="bairro" id="bairro" ng-model="entidade.bairro"
+                                   ng-required="true"
+                                   ng-minlength="2"
+                                   ng-maxlength="30"
+                                   autofocus>
+
+                            <div ng-messages="bairroForm.bairro.$error"
+                                 ng-if="bairroForm.bairro.$touched"
+                                 class="text-danger">
+                                <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error':bairroForm.cidade.$touched && bairroForm.cidade.$invalid}">
+                            <label class="control-label">Nome da Cidade</label>
+                            <input type="text" class="form-control" name="cidade" ng-model="entidade.cidade"
+                                   ng-required="true"
+                                   ng-minlength="2"
+                                   ng-maxlength="30">
+                            <div ng-messages="bairroForm.cidade.$error"
+                                 ng-if="bairroForm.cidade.$touched"
+                                 class="text-danger">
+                                <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error':bairroForm.estado.$touched && bairroForm.estado.$invalid}">
+                            <label class="control-label">Estado</label>
+                            <input type="text" class="form-control" name="estado" ng-model="entidade.estado"
+                                   ng-required="true"
+                                   ng-minlength="2"
+                                   ng-maxlength="30">
+                            <div ng-messages="bairroForm.estado.$error"
+                                 ng-if="bairroForm.estado.$touched"
+                                 class="text-danger">
+                                <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ui-grid="gridOptions"></div>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <button class="btn btn-primary" ng-click="salvar()">Salvar</button>
+                    <button class="btn btn-warning" ng-click="limpar()">Limpar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
