@@ -17,16 +17,14 @@ function ManterBairroController($scope, AlertService, $filter, $state) {
             $scope.bairroForm.bairro.$setTouched();
             $scope.bairroForm.cidade.$setTouched();
             $scope.bairroForm.estado.$setTouched();
-
             AlertService.error('Formulário inválido');
             return;
         }
-        $scope.entidade.bairro = $filter('maiusculo')($scope.entidade.bairro);
-        $scope.entidade.cidade = $filter('maiusculo')($scope.entidade.cidade);
-        $scope.entidade.estado = $filter('maiusculo')($scope.entidade.estado);
-
-        if(!$scope.entidade.indice){
+        else if($scope.entidade.indice == undefined){
             $scope.listaBairros.push($scope.entidade);
+            $scope.entidade.bairro = $filter('maiusculo')($scope.entidade.bairro);
+            $scope.entidade.cidade = $filter('maiusculo')($scope.entidade.cidade);
+            $scope.entidade.estado = $filter('maiusculo')($scope.entidade.estado);
         }
         else{
             var indice = $scope.entidade.indice;
@@ -35,7 +33,6 @@ function ManterBairroController($scope, AlertService, $filter, $state) {
             $scope.listaBairros[indice].estado = $scope.entidade.estado;
             delete $scope.listaBairros[indice].indice;
         }
-
         AlertService.success('Registro salvo com sucesso!');
         limpar();
     }
@@ -43,13 +40,10 @@ function ManterBairroController($scope, AlertService, $filter, $state) {
     function limpar() {
         $scope.entidade = {};
         $scope.bairroForm.$setUntouched();
-
-        angular.element('#bairro').focus();
     }
 
     function excluir(linha) {
         var index = $scope.listaBairros.indexOf(linha);
-
         $scope.listaBairros.splice(index, 1)
     }
 
@@ -65,12 +59,8 @@ function ManterBairroController($scope, AlertService, $filter, $state) {
             {name: 'Nome do Bairro', field:'bairro'},
             {name: 'Nome da Cidade', field:'cidade'},
             {name: 'Estado', field:'estado'},
-            // {name:'ex', field:'excluir',
-            //     cellTemplate:'app/template/grid/cell-template.excluir.html'},
-            // {name:'ed', field:'editar',
-            //     cellTemplate:'app/template/grid/cell-template.editar.html'},
-            {name:'vis', field:'editar',
-                cellTemplate:'app/template/grid/cell-template.visualizar.html'}
+            {name:'', field:'botoes',
+                cellTemplate:'app/template/grid/cell-template.html'}
 
         ],
         data:'listaBairros',
