@@ -1,0 +1,35 @@
+{
+  "name": "bairros",
+  "version": "1.0.0",
+  "description": "é necessario executar o comando. npm install no terminal.",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-material": "^1.1.1",
+    "angular-messages": "^1.5.8",
+    "angular-toastr": "^2.1.1",
+    "angular-ui-grid": "^3.2.9",
+    "angular-ui-router": "^0.3.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "oclazyload": "^1.0.9",
+    "package.json": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narcieliton/manter-bairros.git"
+  },
+  "author": "narcieliton lopes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/narcieliton/manter-bairros/issues"
+  },
+  "homepage": "https://github.com/narcieliton/manter-bairros#readme"
+}
