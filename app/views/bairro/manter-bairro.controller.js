@@ -1,11 +1,15 @@
 angular.module('app')
     .controller('ManterBairroController', ManterBairroController);
 
-function ManterBairroController($scope, AlertService, $filter, $state) {
+function ManterBairroController($scope, AlertService, $filter, $state, $rootScope) {
 
-    $scope.entidade = {};
+    $rootScope.entidade = {
+        bairro: null,
+    cidade: null,
+    estado: null
+    };
 
-    $scope.listaBairros = [];
+
     $scope.salvar = salvar;
     $scope.limpar = limpar;
     $scope.excluir = excluir;
@@ -20,38 +24,38 @@ function ManterBairroController($scope, AlertService, $filter, $state) {
             AlertService.error('Formulário inválido');
             return;
         }
-        else if($scope.entidade.indice == undefined){
-            $scope.listaBairros.push($scope.entidade);
-            $scope.entidade.bairro = $filter('maiusculo')($scope.entidade.bairro);
-            $scope.entidade.cidade = $filter('maiusculo')($scope.entidade.cidade);
-            $scope.entidade.estado = $filter('maiusculo')($scope.entidade.estado);
+        else if($rootScope.entidade.indice == undefined){
+            $rootScope.listaBairros.push($rootScope.entidade);
+            $rootScope.entidade.bairro = $filter('maiusculo')($rootScope.entidade.bairro);
+            $rootScope.entidade.cidade = $filter('maiusculo')($rootScope.entidade.cidade);
+            $rootScope.entidade.estado = $filter('maiusculo')($rootScope.entidade.estado);
         }
         else{
-            var indice = $scope.entidade.indice;
-            $scope.listaBairros[indice].bairro = $scope.entidade.bairro;
-            $scope.listaBairros[indice].cidade = $scope.entidade.cidade;
-            $scope.listaBairros[indice].estado = $scope.entidade.estado;
-            delete $scope.listaBairros[indice].indice;
+            var indice = $rootScope.entidade.indice;
+            $rootScope.listaBairros[indice].bairro = $rootScope.entidade.bairro;
+            $rootScope.listaBairros[indice].cidade = $rootScope.entidade.cidade;
+            $rootScope.listaBairros[indice].estado = $rootScope.entidade.estado;
+            delete $rootScope.listaBairros[indice].indice;
         }
         AlertService.success('Registro salvo com sucesso!');
         limpar();
     }
 
     function limpar() {
-        $scope.entidade = {};
+        $rootScope.entidade = {};
         $scope.bairroForm.$setUntouched();
     }
 
     function excluir(linha) {
-        var index = $scope.listaBairros.indexOf(linha);
-        $scope.listaBairros.splice(index, 1)
+        var index = $rootScope.listaBairros.indexOf(linha);
+        $rootScope.listaBairros.splice(index, 1)
     }
 
     function editar(linha) {
-        $scope.entidade.bairro = linha.bairro;
-        $scope.entidade.cidade = linha.cidade;
-        $scope.entidade.estado = linha.estado;
-        $scope.entidade.indice = $scope.listaBairros.indexOf(linha);
+        $rootScope.entidade.bairro = linha.bairro;
+        $rootScope.entidade.cidade = linha.cidade;
+        $rootScope.entidade.estado = linha.estado;
+        $rootScope.entidade.indice = $rootScope.listaBairros.indexOf(linha);
     }
 
     $scope.gridOptions = {
